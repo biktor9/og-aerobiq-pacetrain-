@@ -1,0 +1,9 @@
+# Secrets for the local Worker (`npm run preview`). Copy to .dev.vars, which is
+# gitignored. A real deployment gets these with `wrangler secret put` instead.
+#
+# BETTER_AUTH_URL has to match the port `wrangler dev` prints, otherwise
+# better-auth rejects the request as a cross-origin one.
+BETTER_AUTH_URL=http://127.0.0.1:8787
+BETTER_AUTH_SECRET=
+ENCRYPTION_KEY=
+DEEPSEEK_API_KEY=

@@ -1,0 +1,9 @@
+# Normalise line endings so Windows and CI agree.
+* text=auto eol=lf
+
+# Keep these byte-for-byte.
+*.png binary
+*.jpg binary
+*.ico binary
+*.db binary
+*.sqlite binary

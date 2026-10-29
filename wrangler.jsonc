@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pacetrain",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // The Next build output, served as static assets by the Worker.
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  // Logs from `console.*` (the email transport writes there) show in the dashboard.
+  "observability": { "enabled": true },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pacetrain",
+      // Replace with the id `wrangler d1 create pacetrain` prints (see DEPLOY.md).
+      "database_id": "8764b56f-494c-4a34-b240-ccdae01030ec",
+      // The Drizzle migrations in ./drizzle are applied by `wrangler d1 migrations apply`.
+      "migrations_dir": "drizzle"
+    }
+  ],
+
+  // Non-secret settings. Secrets go in with `wrangler secret put` (see DEPLOY.md).
+  "vars": {
+    "DATABASE_DRIVER": "d1",
+    // Must be the public URL of the deployment, including https://
+    "BETTER_AUTH_URL": "https://pacetrain.biktor9.workers.dev",
+    "ALLOW_SIGNUP": "true",
+    "PAYWALL_ENABLED": "true",
+    "EMAIL_TRANSPORT": "console",
+    "ADMIN_EMAILS": "viktorswe39@gmail.com"
+  }
+}
